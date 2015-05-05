@@ -5,7 +5,7 @@
 
 ClientNotifyMonitor::ClientNotifyMonitor(QObject* parent)
     : QObject(parent){
-    mReceiver=new DatagramReceiver(9054, this);
+    mReceiver=new DatagramReceiver(5000, this);
     connect(mReceiver, SIGNAL(datagramReseived(QString, QString)),
             this, SLOT(parseDatagram(QString, QString)));
 }

@@ -15,13 +15,13 @@ public:
     explicit MainThread(QObject *parent = 0);
 signals:
     void addNewClient(const ClientData&);
-    void changeCurrentClient(const ClientData&);
+    void changeClient(const ClientData&);
 private slots:
     void processReceivedData(ClientData receivedData);
 private:
     std::unique_ptr<IDataSaver> dataSaver_;
     std::unique_ptr<MainWindow> mainWindow_;
-    ClientNotifyMonitor* clientMonitor_;
+    std::unique_ptr<ClientNotifyMonitor> clientMonitor_;
     QMap<QString, ClientData> clientDataStorage_;
     int secondsToGetOfflineStatus_;
 };

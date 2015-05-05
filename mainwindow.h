@@ -21,7 +21,7 @@ public slots:
     void changeClient(const ClientData& );
 private:
     Ui::MainWindow *ui;
-    QMap<QString, std::unique_ptr<QTreeWidgetItem>> itemMap;
+    QMap<QString, QTreeWidgetItem*> itemMap;
 };
 
 #endif // MAINWINDOW_H

@@ -6,18 +6,11 @@
 
 class IDataSaver{
 public:
-    IDataSaver();
+    IDataSaver(){}
     virtual QVector<ClientData> loadData()=0;
     virtual void saveData(const QVector<ClientData>&)=0;
-    virtual ~IDataSaver();
+    virtual ~IDataSaver(){}
 };
 
-
-IDataSaver::IDataSaver(){
-}
-
-IDataSaver::~IDataSaver(){
-
-}
 
 #endif // IDATASAVER_H
