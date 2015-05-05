@@ -9,9 +9,9 @@ public:
     DatagramReceiver(int port, QObject *parent=0);
     ~DatagramReceiver();
 public slots:
-    void readPendingDatagrams();
+    void readPendingDatagrams() const;
 signals:
-    void datagramReseived(QString addr, QString data);
+    void datagramReseived(QString addr, QString data) const;
 private:
     QUdpSocket* mUdpSocket;
     qint16 mLocalPort;

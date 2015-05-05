@@ -8,21 +8,25 @@ QT += core network widgets
 
 CONFIG += qt c++11
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
 TARGET = adtools-server
-TEMPLATE = app
 
-
-SOURCES += main.cpp\
-        mainwindow.cpp \
+SOURCES += \
+    main.cpp \
+    clientnotifymonitor.cpp \
     datagramreceiver.cpp \
-    clientstorage.cpp \
-    clientdata.cpp
+    mainwindow.cpp \
+    clientdata.cpp \
+    mainthread.cpp \
+    filestorage.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS += \
+    clientnotifymonitor.h \
     datagramreceiver.h \
-    clientstorage.h \
-    clientdata.h
+    mainwindow.h \
+    clientdata.h \
+    mainthread.h \
+    idatasaver.h \
+    filestorage.h
 
-FORMS    += mainwindow.ui
+FORMS += \
+    mainwindow.ui

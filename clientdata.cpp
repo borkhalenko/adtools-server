@@ -35,6 +35,16 @@ void ClientData::setLastOnlineTime(const QDateTime &lastOnlineTime){
     lastOnlineTime_ = lastOnlineTime;
 }
 
+bool ClientData::OnlineStatus_() const{
+    return onlineStatus_;
+}
+
+void ClientData::setOnlineStatus(bool status){
+    onlineStatus_=status;
+}
+
+
+
 
 
 

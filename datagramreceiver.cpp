@@ -11,7 +11,7 @@ DatagramReceiver::DatagramReceiver(int port, QObject *parent)
             this, SLOT(readPendingDatagrams()));
 }
 
-void DatagramReceiver::readPendingDatagrams(){
+void DatagramReceiver::readPendingDatagrams() const {
     while (mUdpSocket->hasPendingDatagrams()){
         QByteArray datagram;
         datagram.resize(mUdpSocket->pendingDatagramSize());

@@ -10,3 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow(){
     delete ui;
 }
+
+void MainWindow::addNewClient(const ClientData &){
+    std::unique_ptr<QTreeWidgetItem> newItem(new QTreeWidgetItem(ui->treeWidget));
+
+}
+
+void MainWindow::changeClient(const ClientData &){
+
+}
