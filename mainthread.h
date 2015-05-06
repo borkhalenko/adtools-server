@@ -13,6 +13,9 @@ class MainThread : public QObject{
     Q_OBJECT
 public:
     explicit MainThread(QObject *parent = 0);
+    MainThread(const MainThread& )=delete;
+    MainThread& operator=(const MainThread&)=delete;
+    ~MainThread();
 signals:
     void addNewClient(const ClientData&);
     void changeClient(const ClientData&);
@@ -24,6 +27,9 @@ private:
     std::unique_ptr<ClientNotifyMonitor> clientMonitor_;
     QMap<QString, ClientData> clientDataStorage_;
     int secondsToGetOfflineStatus_;
+    void loadDataFromTheStorage();
+    void saveDataToTheStorage();
+    void connectAllSignalsAndSlots();
 };
 
 #endif // MAINTHREAD_H

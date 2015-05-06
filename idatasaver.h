@@ -7,8 +7,8 @@
 class IDataSaver{
 public:
     IDataSaver(){}
-    virtual QVector<ClientData> loadData()=0;
-    virtual void saveData(const QVector<ClientData>&)=0;
+    virtual QList<ClientData> loadData() const =0;
+    virtual void saveData(const QList<ClientData>&) const =0;
     virtual ~IDataSaver(){}
 };
 

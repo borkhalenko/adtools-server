@@ -35,7 +35,7 @@ void ClientData::setLastOnlineTime(const QDateTime &lastOnlineTime){
     lastOnlineTime_ = lastOnlineTime;
 }
 
-bool ClientData::OnlineStatus_() const{
+bool ClientData::onlineStatus() const{
     return onlineStatus_;
 }
 
@@ -43,8 +43,28 @@ void ClientData::setOnlineStatus(bool status){
     onlineStatus_=status;
 }
 
+QString ClientData::toString() const{
+    QString tmpString;
+    tmpString+="Client name: "+pcName()+
+            "\nIP: "+ipv4()+
+            "\nGroup name: "+groupName()+
+            "\nLastOnlineTime: "+lastOnlineTime().toString()+
+            "\nOnlineStatus: "+QString::number(onlineStatus());
+    return tmpString;
+}
+
+bool operator==(const ClientData& left, const ClientData& right){
+    if ( left.pcName() == right.pcName() &&
+         left.ipv4() == right.ipv4() &&
+         left.groupName() == right.groupName() &&
+         left.lastOnlineTime() == right.lastOnlineTime() &&
+         left.onlineStatus() == right.onlineStatus())
+        return true;
+    else
+        return false;
+}
 
 
-
-
-
+bool operator!=(const ClientData& left, const ClientData& right){
+    return !(left==right);
+}

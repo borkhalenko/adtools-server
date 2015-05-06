@@ -19,9 +19,10 @@ public:
     QDateTime   lastOnlineTime() const;
     void        setLastOnlineTime(const QDateTime &lastOnlineTime);
 
-    bool        OnlineStatus_()  const;
+    bool        onlineStatus()  const;
     void        setOnlineStatus(bool);
 
+    QString     toString() const;
 private:
     QString     pcName_;
     QString     ipv4_;
@@ -29,5 +30,8 @@ private:
     QDateTime   lastOnlineTime_;
     bool        onlineStatus_;
 };
+
+bool operator==(const ClientData&, const ClientData&);
+bool operator!=(const ClientData&, const ClientData&);
 
 #endif // CLIENTDATA_H
