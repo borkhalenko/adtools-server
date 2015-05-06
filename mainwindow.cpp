@@ -21,5 +21,6 @@ void MainWindow::addNewClient(const ClientData& clientData){
 }
 
 void MainWindow::changeClient(const ClientData & clientData){
+    itemMap[clientData.pcName()]->setText(1, clientData.ipv4());                // If Ip is changed.
     itemMap[clientData.pcName()]->setText(2, clientData.lastOnlineTime().toString("dd.MM.yyyy hh:mm:ss"));
 }
