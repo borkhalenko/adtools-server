@@ -6,10 +6,12 @@ MainThread::MainThread(QObject *parent) :
     dataSaver_(new FileStorage()),
     mainWindow_(new MainWindow()),
     clientMonitor_(new ClientNotifyMonitor()),
-    secondsToGetOfflineStatus_(60){
+    timer_(new QTimer),
+    secondsToGetOfflineStatus_(10){
     connectAllSignalsAndSlots();
     mainWindow_->show();
     loadDataFromTheStorage();
+    checkOnlineForAll();
 }
 
 MainThread::~MainThread(){
@@ -28,8 +30,15 @@ void MainThread::processReceivedData(ClientData receivedData){
     clientDataStorage_[clientName]=receivedData;
 }
 
-void MainThread::checkOnlineStatus(){
-
+void MainThread::checkOnlineForAll(){
+    QDateTime lastAllowableTime=QDateTime::currentDateTime().addSecs(-secondsToGetOfflineStatus_);
+    foreach (auto element, clientDataStorage_.values()){
+        if (element.lastOnlineTime()<lastAllowableTime){
+            element.setOnlineStatus(false);
+            emit changeClient(element);
+        }
+    }
+    timer_->start(secondsToGetOfflineStatus_);
 }
 
 void MainThread::loadDataFromTheStorage(){
@@ -50,6 +59,8 @@ void MainThread::saveDataToTheStorage(){
 void MainThread::connectAllSignalsAndSlots(){
     connect(clientMonitor_.get(), SIGNAL(receivedNewData(ClientData)),
             this, SLOT(processReceivedData(ClientData)));
+    connect(timer_, SIGNAL(timeout()),
+            this, SLOT(checkOnlineForAll()));
     connect(this, SIGNAL(addNewClient(ClientData)),
             mainWindow_.get(), SLOT(addNewClient(ClientData)));
     connect(this, SIGNAL(changeClient(ClientData)),

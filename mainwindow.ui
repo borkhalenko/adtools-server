@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
+    <width>441</width>
     <height>423</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>401</width>
+      <width>441</width>
       <height>401</height>
      </rect>
     </property>
@@ -35,7 +35,7 @@
      <bool>false</bool>
     </attribute>
     <attribute name="headerDefaultSectionSize">
-     <number>130</number>
+     <number>150</number>
     </attribute>
     <attribute name="headerShowSortIndicator" stdset="0">
      <bool>true</bool>
