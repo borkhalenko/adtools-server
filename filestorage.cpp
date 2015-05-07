@@ -13,6 +13,9 @@ QList<ClientData> FileStorage::loadData() const{
     //Bad code. Need return smart pointer or use input reference.
     QList<ClientData> dataCollection;
     QFile dataFile(dataFileName_);
+    if (!dataFile.exists()){
+        return dataCollection;
+    }
     if (!dataFile.open(QIODevice::ReadOnly)){
         QMessageBox::warning(0, "REad file error!", "Error reading client data from the file. Do you have correct permissions?"
                              "Please, remember this message and contact to the support");
