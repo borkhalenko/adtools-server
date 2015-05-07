@@ -28,11 +28,18 @@ void MainThread::processReceivedData(ClientData receivedData){
     clientDataStorage_[clientName]=receivedData;
 }
 
+void MainThread::checkOnlineStatus(){
+
+}
+
 void MainThread::loadDataFromTheStorage(){
     QList<ClientData> tmpDataStorage=dataSaver_->loadData();
     foreach(const ClientData& element, tmpDataStorage){
+        // bad code. need to change multiple calling element.pcName()
+        // and QMap.operator[] when refactor
         clientDataStorage_[element.pcName()]=element;
-        emit addNewClient(element);
+        clientDataStorage_[element.pcName()].setOnlineStatus(false);
+        emit addNewClient(clientDataStorage_[element.pcName()]);
     }
 }
 

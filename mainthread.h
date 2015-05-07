@@ -27,6 +27,7 @@ private:
     std::unique_ptr<ClientNotifyMonitor> clientMonitor_;
     QMap<QString, ClientData> clientDataStorage_;
     int secondsToGetOfflineStatus_;
+    void checkOnlineStatus();
     void loadDataFromTheStorage();
     void saveDataToTheStorage();
     void connectAllSignalsAndSlots();

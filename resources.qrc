@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>rec/invis.png</file>
+        <file>rec/online.png</file>
+    </qresource>
+</RCC>
